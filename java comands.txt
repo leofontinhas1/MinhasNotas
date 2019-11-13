@@ -1,0 +1,16 @@
+private Type getGenericType(Class<?> target) {
+    Type[] types = target.getGenericInterfaces();
+    return types.length == 0 ? this.getGenericType(target.getSuperclass()) : ((ParameterizedType)types[0]).getActualTypeArguments()[0];
+}
+--- mesma coisa que ---
+private Type getGenericType(Class<?> target) {
+    Type[] types = target.getGenericInterfaces();
+    if(types.length == 0){
+	return this.getGenericType(target.getSuperclass());
+    }
+    return ((ParameterizedType)types[0]).getActualTypeArguments()[0];
+}
+--------------------
+Stream.of -> usa para array 
+list.stream -> usa em lista
+--------------------

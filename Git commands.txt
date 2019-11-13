@@ -1,0 +1,70 @@
+comandos basicos:
+. git config [--global] user.email --> adiciona email do usuario
+. git config [--global] user.name --> adiciona nome do usuario
+. git init --> inicia repositorio local no diretorio selecionado
+. git remote add [nome] [link do repositorio remoto] --> linka repositorio remoto
+. git status --> retorna estado atual do repositorio
+. git clone [link do repositorio remoto] --> cria repositorio local e baixa conteudos do repositorio remoto
+. git pull [nome] [branch] --> puxa as informaçoes do repositorio remoto
+. git add [nome arquivos, pasta, ou '.' para tudo] --> adiciona arquivos modificados para o index
+. git commit -m "[mensagem]" --> commita arquivos
+. git push [-u (faz conexao com repositorio remoto)] [nome] [branch] --> faz upload dos commits/arquivos/alteraçoes do repositorio local para o repositorio remoto
+
+-------------------------------------------------------------------------------------x-------------------------------------------------------------------------------------
+
+comandos uteis:
+. git ls-files --> arquivos sendo controlados
+. git checkout [versao, exemplo: v0.1] --> retorna pra versao selecionada
+. git diff [versao 1, exemplo: v0.1] [versao 2, exemplo: v0.2] --> diferença entre versoes
+. git log --> historico de commits
+. git whatchanged --> git log + oque foi alterado
+. git remote --> informa quais conexoes remotas existem
+. git remote --> informa e mostra link de repositorios remotos conectados
+
+
+log = visualizar alteraçoes
+alias = para definir atalhos/apelidos [vim ~/.gitconfig] (pesquise sobre)
+pull requests = controle de alteraçoes
+
+-------------------------------------------------------------------------------------x-------------------------------------------------------------------------------------
+
+branches:
+. git branch --> verifica qual branch está sendo utilizada
+. git branch [nome da branch] --> cria uma branch
+. git checkout [nome da branch] --> altera para a branch
+. git branch -d [nome da branch] --> deleta branch local
+. git push origin --d [nome da branch] --> deleta branch remota
+. git push origin :[nome da branch] --> deleta branch remota
+. git checkout -b [nome da branch] --> cria e da checkout na (muda para a) branch
+. git push -u origin [nome da branch] --> cria branch remota e interliga com a local
+. git branch -r --> lista branches remotas
+. git branch -a --> lista branches remotas e locais (todas as branches)
+. git checkout -t origin/[nome da branch] --> cria branch local com o mesmo nome da branch remota, muda pra nova branch e cria link entre branch local e remota
+. git fetch origin --> verifica todas as atualizaçoes q foram realizadas no repositório de atalho origin
+. git merge [nome da branch (que nao a atual)] --> mescla alteraçoes de outra branch para branch atual
+. git rebase [nome da branch 1] [nome da branch 2] --> atualizar branch 2 com conteudo da branch 1
+. git cherry-pick [hashcode do commit] --> traz um commit especifico de outra branch pra branch atual
+. git cherry-pick [hashcode do commit] -n/--no-comit --> traz as alteraçoes de um commit para o index, sem fazer commit
+. git cherry-pick [hashcode 1]...[hashcode 2] --> faz cherry pick de todos os commits do primeiro até o último (ordem)
+
+Alguns dos casos mais comuns de uso do git cherry-pick são situações em que um pull request ou a mescla de uma branch será recusada, 
+mas há commits com código aproveitável e necessário. Estes commits precisam ser isolados e importados pra dentro da sua branch atual, 
+com o cuidado de não incluir o restante do código que será descartado.
+
+
+
+exemplo, para enviar as alteraçoes feitas em uma branch "desenvolvimento" para a branch master:
+
+git checkout master
+git pull --> verifica se está atualizada
+git checkout desenvolvimento
+git rebase master
+git checkout master
+git merge desenvolvimento
+git push
+
+
+para "automatizar" esse processo, defina um alias no gitconfig:
+
+[alias]
+        envia/publica = !git checkout master && git pull && git checkout desenvolvimento && git rebase master && git checkout master && git merge desenvolvimento && git push

@@ -1,0 +1,77 @@
+Meu docker deu pau (Docker Toolbox), o que fazer?
+
+	Primeiro veja se a default está up (Default é a maquina virtual linux que roda o docker).
+		Como ver: No bash rode o seguinte comando:	docker-machine ls
+		Se o default estiver stopped só rodar o comando: docker-machine start default
+
+	Se por algum motivo a docker-machine default der pau, pode matar ela e criar outra:
+		Matar: docker-machine rm default
+		Criar outra: docker-machine create default
+
+	Esqueci os comandos da docker-machine como fazer?
+		Roda o comando 'docker-machine' que ele mostra toda lista de comandos.
+	
+
+Docker do 0
+	
+	O que é uma imagem?
+		Imagem é um programa pronto, que está as vezes ja todo configurado.
+		
+	Como baixar um imagem:
+		Vá no repositorio dockerhub e busca a imagem desejada.
+		depois rode o seguinte comando: docker pull 'nome da imagem'
+	
+	Como ver todas minhas imagens:
+		docker images
+		
+	Quero rodar um container contendo uma imagem:
+		docker create: Só starta uma maquina mas n roda ela.
+		docker start : Só roda uma maquina mas n starta ela.
+		docker run: faz os dois.
+		
+	Como ver todos os containers que estão rodando:
+		docker ps
+		
+	Como ver todos os containers parados e rodando:
+		docker ps -a
+
+Como extrair uma imagem de um arquivo para o meu computador:
+	docker load < 'nome da imagem'
+	
+---x----x----x---
+Configurar os Notepad do init-database.sql e docker-compose-yml que estão dentro da pasta develpment
+
+Basta trocar os campos onde está escrito o nome do Projeto padrão para o nome do seu projeto
+
+Salva tudo e roda o run.
+---x----x----x---
+Configurar DBeaver 
+
+	Configurando a conection type:
+		Configurando o DBeaver Local
+		Host: 192.168.99.100
+		Port: 1521
+		Database:xe
+		SID
+		
+		User name: TIMELINE
+		password: TIMELINE (Maiusculo)
+	
+	Após fazer a configuração apertar no Test Connection
+	
+	Bem provavelmente pedira para instalar o ojdbc
+	
+	Aperte no botão no próprio DBeaver que ele redirecionará para a oagina de fazer o download do ojdbc (Caso não redirecione so entrar https://www.oracle.com/database/technologies/jdbc-upc-downloads.html)
+	
+	Baixar o ojdbc (de preferencia o -full)
+	
+	Após baixar, coloque em uma pasta que desejar e de GIT BASH na pasta
+	
+	Após dar o GIT BASH dar o comando 'tar xvzf file.tar.gz' (Sem as ' ' e no lugar do file o nome do ojdbc)
+	
+	Em seguida voltar para o DBeavere em Test Connection de novo clicar em adicionar JAR
+	
+	Selecione a pasta que foi extraida no comando do GIT
+	
+	DBeaver configurado e pronto!	
+	

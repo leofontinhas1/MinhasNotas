@@ -14,3 +14,8 @@ private Type getGenericType(Class<?> target) {
 Stream.of -> usa para array 
 list.stream -> usa em lista
 --------------------
+/*mapeando um Map para um DTO*\
+umMapQualquer.entrySet()
+                .stream()
+                .map(config -> new ConfigurationResponseDTO(config.getKey(), config.getValue()))
+                .collect(Collectors.toList());

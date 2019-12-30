@@ -19,3 +19,7 @@ umMapQualquer.entrySet()
                 .stream()
                 .map(config -> new ConfigurationResponseDTO(config.getKey(), config.getValue()))
                 .collect(Collectors.toList());
+
+--------------------
+equivalente ao List.of
+Array.asList

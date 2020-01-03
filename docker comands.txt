@@ -47,3 +47,13 @@ EXPOSE 8080
 ||---------------||
 
 docker run -p 80:80 -d  correio-feedback-vue
+
+||-------------- doker logs ----------------||
+
+601 - é o id do container 
+
+docker logs -f 601 --tail 1111
+
+
+
+

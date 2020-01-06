@@ -1,0 +1,7 @@
+||----dicas da Andrea----||
+
+dividir em camadas por entregável 
+
+-epic
+  -feature
+    -useStory

@@ -1,0 +1,13 @@
+para derrubar módulo e subir de novo 
+
+enrtar no diretório /home/ec2-user/docker/docker_apptools
+
+	cd /home/ec2-user/docker/docker_apptools
+
+executar satck_rm.sh para derrubar o módulo
+
+	sh stack_rm.sh
+
+em seguida executar stack_deploy.sh para subir módulo
+
+	sh stack_deploy.sh

@@ -11,3 +11,12 @@ executar satck_rm.sh para derrubar o módulo
 em seguida executar stack_deploy.sh para subir módulo
 
 	sh stack_deploy.sh
+
+--------------------------------------------------------
+para conectar com mtputty
+
+tem que ter o arquivo putty 
+
+fazer o load das maquinas ir em ssh/auth e clicar em browse
+
+então adicionar o arquivo ppk

@@ -22,3 +22,17 @@ tem que ter o arquivo putty
 fazer o load das maquinas ir em ssh/auth e clicar em browse
 
 então adicionar o arquivo ppk
+
+-------------------------------------------------------
+
+quando o módulo estiver com algun problema para subir que seja parecido com isso :
+
+	2020-01-16 09:04:43 INFO  liquibase:92 - Waiting for changelog lock...
+
+rodar o seguinte comando no banco de dados desse módulo
+
+	UPDATE DATABASECHANGELOGLOCK SET LOCKED=0, LOCKGRANTED=null, LOCKEDBY=null where ID=1;
+	commit;
+
+
+

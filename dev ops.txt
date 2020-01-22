@@ -19,9 +19,17 @@ para conectar com mtputty
 
 tem que ter o arquivo putty 
 
-fazer o load das maquinas ir em ssh/auth e clicar em browse
+fazer o load de uma maquina
+
+ir no campo "Saved Sessions"
+
+dar um nome à conexão ex "worker8"
+
+ir em ssh/auth e clicar em browse
 
 então adicionar o arquivo ppk
+
+salvar
 
 -------------------------------------------------------
 

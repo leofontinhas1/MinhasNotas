@@ -1,0 +1,14 @@
+ environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SECURITY_USER_PASSWORD=konadm_123
+            - JHIPSTER_REGISTRY_PASSWORD=konadm_123
+            - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:./central-config/localhost-config/
+            - GIT_URI=http://192.168.208.47/Koncilia/koncilia_configs.git
+            - GIT_SEARCH_PATHS=central-config
+            - SPRING_CLOUD_CONFIG_SERVER_GIT_FORCE-PULL=true
+            - SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME=konciliadev
+            - SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD=Konciliadev_1234
+            - JAVA_OPTS=-Xmx768m -Xms256m
+        ports:
+            - 8761:8761
+        deploy:

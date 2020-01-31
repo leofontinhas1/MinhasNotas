@@ -42,5 +42,18 @@ rodar o seguinte comando no banco de dados desse módulo
 	UPDATE DATABASECHANGELOGLOCK SET LOCKED=0, LOCKGRANTED=null, LOCKEDBY=null where ID=1;
 	commit;
 
+---------------------------
+para colocar os logs em um arquivo txt
 
+primeiro entre no diretório que você quer , como por exemplo o o diretório do módulo que você quer
 
+	cd /home/ec2-user/docker/docker_appb2w
+
+depois crie o coloque os logs no arquivo txt 
+
+	docker logs -f id --tail 1111 > logs.txt
+
+por fim entre no programa WinSCP e pegue o arquivo do log que vc quer 
+
+ps apague o arquivo txt no fim
+--------------------------------

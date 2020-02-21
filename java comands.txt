@@ -23,3 +23,18 @@ umMapQualquer.entrySet()
 --------------------
 equivalente ao List.of
 Array.asList
+
+
+--------------------
+eu tinha escrito assim : 
+
+	Optional<DafitiConfiguration> configuration = Optional.ofNullable(configurationService.getConfiguration());
+        return configuration.isPresent() ? configurationTranslator.from(configuration).orElse(null);
+
+mas o intelij me sugeriu fazer diferente: 
+
+	Optional<DafitiConfiguration> configuration = Optional.ofNullable(configurationService.getConfiguration());
+	return configuration.map(configurationTranslator::from).orElse(null);
+
+//gostei
+----------------------

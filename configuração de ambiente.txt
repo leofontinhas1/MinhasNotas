@@ -12,3 +12,14 @@
         ports:
             - 8761:8761
         deploy:
+
+
+//--------------------//
+
+subir core pela primeira vez 
+
+	Ao subir pela primeira vez,
+	é necessário descomentar a linha ‘start_inserts.sql’ 
+	do arquivo ‘db.changelog-master.xml’. 
+	Ocorrerá um erro, então será necessário comentar novamente
+	a linha e então subir novamente.

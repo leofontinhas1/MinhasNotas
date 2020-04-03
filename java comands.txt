@@ -38,3 +38,7 @@ mas o intelij me sugeriu fazer diferente:
 
 //gostei
 ----------------------
+colocar em adapters
+public List<ObjectDTO> toDTO(List<ObjectEntity> results) {
+        return results.stream().map(this::toDTO).collect(Collectors.toList());
+    }

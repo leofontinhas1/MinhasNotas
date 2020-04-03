@@ -23,3 +23,13 @@ subir core pela primeira vez
 	do arquivo ‘db.changelog-master.xml’. 
 	Ocorrerá um erro, então será necessário comentar novamente
 	a linha e então subir novamente.
+//---------------------//
+Resolver o problema do Redis
+	
+	- Abrir kitematic
+	- Clicar em Docker cli
+	- Certificar-se de que todos os outros módulos necessários estejam em pé
+	- executar o comando "docker system prune -a -f"
+
+
+

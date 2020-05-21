@@ -1,0 +1,212 @@
+select * from conciliation where oi = num_oi and status = 'CANCELED' and CHANNEL_ID = 41;
+
+select * from conciliation where oi = num_oi and status = 'CANCELED';
+
+select * from conciliation where id in (123456);
+
+select * from channel;
+
+
+
+
+
+    DELETE ACCUSATION_MESSAGE_AUD WHERE id in (select id from ACCUSATION_MESSAGE where ACCUSATION_ID in (select id from ACCUSATION WHERE oi = num_oi AND CONCILIATION_ID in (123456)));  
+    commit; 
+
+    DELETE ACCUSATION_MESSAGE where ACCUSATION_ID in (select id from ACCUSATION WHERE oi = num_oi AND CONCILIATION_ID in (123456));  
+    commit; 
+
+    DELETE ACCUSATION_AUD WHERE id in (select id from  ACCUSATION where oi = num_oi and CONCILIATION_ID in (123456));  
+    commit; 
+
+    DELETE ACCUSATION WHERE oi = num_oi AND CONCILIATION_ID in (123456);  
+    commit; 
+  
+    DELETE ORDERPLOT_EXTRACT_CONCIL_AUD WHERE id in (select id from ORDERPLOT_EXTRACT_CONCIL where oi = num_oi and CONCILIATION_ID in (123456));  
+    commit; 
+
+    DELETE ORDERPLOT_EXTRACT_CONCIL WHERE oi = num_oi AND CONCILIATION_ID in (123456);  
+    commit; 
+
+    DELETE FINANCERELEASE_AUD WHERE id in (select id from FINANCERELEASE where oi = num_oi and CONCILIATION_ID in (123456));  
+    commit; 
+
+ UPDATE FINANCERELEASE SET OI = 'semOI', CONCILIATION_ID = NULL WHERE oi = num_oi AND CONCILIATION_ID in (123456); 
+    --DELETE FINANCERELEASE WHERE oi = num_oi AND CONCILIATION_ID in (123456);  
+    commit; 
+
+    DELETE CONCILIATIONLINEMESSAGE_AUD WHERE ID in (select id from CONCILIATIONLINEMESSAGE WHERE CONCILIATION_ID in (123456)); 
+    commit; 
+
+    DELETE CONCILIATIONLINEMESSAGE WHERE CONCILIATION_ID in (123456);  
+    commit; 
+
+    DELETE CONC_SUMMARY_DETAIL_AUD WHERE  oi = num_oi AND CONCILIATION_SUMMARY_ID in (select id from CONCILIATION_SUMMARY WHERE CONCILIATION_ID in (123456));   
+    COMMIT; 
+
+    DELETE CONC_SUMMARY_DETAIL WHERE  oi = num_oi AND CONCILIATION_SUMMARY_ID in (select id from CONCILIATION_SUMMARY WHERE CONCILIATION_ID in (123456));   
+    COMMIT; 
+
+    DELETE CONCILIATION_SUMMARY_AUD WHERE ID in (select id from CONCILIATION_SUMMARY WHERE CONCILIATION_ID in (123456));  
+    commit; 
+
+    DELETE CONCILIATION_SUMMARY WHERE oi = num_oi AND CONCILIATION_ID in (123456);  
+    commit; 
+
+    DELETE CONCILIATION_AUD WHERE id in (123456);  
+    commit; 
+
+    DELETE CONCILIATION WHERE oi = num_oi AND id in (123456);  
+    commit; 
+    
+    ---------------------------------------------------------------
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    delete  ORDERPLOT_EXTRACT oe   
+
+    where oe.oi = num_oi   
+
+        and oe.CHANNEL_ID = 41 
+
+        and trunc(oe.order_date) >= to_date('01/11/2019', 'dd/MM/yyyy')   
+
+        and oe.account_name = accountName 
+
+        and not EXISTS   
+
+            (select oec.orderplot_extract_id from ORDERPLOT_EXTRACT_CONCIL oec   
+
+                        where oec.oi = num_oi   
+
+                        and oec.CHANNEL_ID = 41  
+
+                        and oec.orderplot_extract_id = oe.id);   
+
+COMMIT;  
+
+  
+
+delete ORDERPLOT_ITEM_CAT where oi = num_oi   
+
+    and ORDERPLOT_ITEM_ID in (  
+
+select id from ORDERPLOT_ITEM opi   
+
+    where oi = num_oi  
+
+        and opi.ORDERPLOT_ID in (  
+
+        select id from ORDERPLOT o  
+
+            where o.oi = num_oi   
+
+                and o.CHANNEL_ID = 41   
+
+                and trunc(o.order_date) >= to_date('01/11/2019', 'dd/MM/yyyy')  
+
+                and o.account_name = accountName 
+
+                and not EXISTS   
+
+                    (select oe.orderplot_id from ORDERPLOT_EXTRACT oe   
+
+                                where oe.oi = num_oi   
+
+                                and oe.CHANNEL_ID = 41  
+
+                                and oe.orderplot_id = o.id)));  
+
+COMMIT;  
+
+  
+
+delete ORDERPLOT_ITEM where oi = num_oi   
+
+    and ORDERPLOT_ID in(  
+
+select id from ORDERPLOT o  
+
+    where o.oi = num_oi   
+
+        and o.CHANNEL_ID = 41   
+
+        and trunc(o.order_date) >= to_date('01/11/2019', 'dd/MM/yyyy')  
+
+        and o.account_name = accountName 
+
+        and not EXISTS   
+
+            (select oe.orderplot_id from ORDERPLOT_EXTRACT oe   
+
+                        where oe.oi = num_oi   
+
+                        and oe.CHANNEL_ID = 41  
+
+                        and oe.orderplot_id = o.id));  
+
+COMMIT;  
+
+  
+
+delete ORDERPLOT_PAYMENT where oi = num_oi   
+
+    and ORDERPLOT_ID in(  
+
+select id from ORDERPLOT o  
+
+    where o.oi = num_oi   
+
+        and o.CHANNEL_ID = 41  
+
+        and trunc(o.order_date) >= to_date('01/11/2019', 'dd/MM/yyyy')  
+
+        and o.account_name = accountName 
+
+        and not EXISTS   
+
+            (select oe.orderplot_id from ORDERPLOT_EXTRACT oe   
+
+                        where oe.oi = num_oi   
+
+                        and oe.CHANNEL_ID = 41  
+
+                        and oe.orderplot_id = o.id));              
+
+                        COMMIT;  
+
+  
+
+update ORDERPLOT o set oi = 'outroOI'  
+
+--select * from ORDERPLOT o   
+
+    where o.oi = num_oi   
+
+        and o.CHANNEL_ID = 41  
+
+        and trunc(o.order_date) >= to_date('01/11/2019', 'dd/MM/yyyy')  
+
+        and o.account_name = accountName 
+
+        and not EXISTS   
+
+            (select oe.orderplot_id from ORDERPLOT_EXTRACT oe   
+
+                        where oe.oi = num_oi    
+
+                        and oe.CHANNEL_ID = 41  
+
+                        and oe.orderplot_id = o.id);  
+
+COMMIT; 

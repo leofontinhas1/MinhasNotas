@@ -31,5 +31,13 @@ Resolver o problema do Redis
 	- Certificar-se de que todos os outros módulos necessários estejam em pé
 	- executar o comando "docker system prune -a -f"
 
+//----------------------//
+setar gumga tread scope
 
-
+Setar organization code: GumgaThreadScope.organizationCode.set("205000314."); 	
+Classes: 
+	-br.com.db1.koncilier.api.view.api.conciliation.ConciliationViewAPI#post 
+	-br.com.db1.koncilier.api.view.api.conciliation.AccusationJustificationViewAPI#post 
+	-br.com.db1.koncilier.api.view.api.conciliation.ConciliationDetailsViewAPI#closeConciliation 	
+	-br.com.db1.koncilier.gateway.dashboard.DashboardGateway#getDashboardData 
+	-br.com.db1.koncilier.api.view.gateway.SimulationViewGateway#pesquisa 

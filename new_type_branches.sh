@@ -22,21 +22,6 @@ git checkout -b $BRANCH_NAME
 echo "report pronto"
 cd ..
 
-cd ./koncilier_rules/
-git checkout -b $BRANCH_NAME
-echo "rules pronto"
-cd ..
-
-cd ./koncilier_api/
-git checkout -b $BRANCH_NAME
-echo "api pronto"
-cd ..
-
-cd ./koncilier_swagger/
-git checkout -b $BRANCH_NAME
-echo "swagger pronto"
-cd ..
-
 cd ./koncilier_$CHANNEL_NAME/
 git checkout -b $BRANCH_NAME
 echo $CHANNEL_NAME " pronto"
